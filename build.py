@@ -37,7 +37,7 @@ def get_personal_data():
             <div class='col-auto mb-2'><a href='https://joschkacbraun.github.io/assets/pdf/CV_Joschka_Braun.pdf' target='_blank'><i class='fa fa-address-card fa-lg'></i> CV</a></div>
             <div class='col-auto mb-2'><a href='mailto:{email}'><i class='far fa-envelope-open fa-lg'></i> Mail</a></div>
             <div class='col-auto mb-2'><a href='https://twitter.com/{twitter}' target='_blank'><i class='fab fa-x-twitter fa-lg'></i> Twitter</a></div>
-            <div class='col-auto mb-2'><a href='https://scholar.google.com/citations?user=NexA8EEAAAAJ&hl=en' target='_blank'><i class='fa-solid fa-book'></i> Scholar</a></div>
+            <div class='col-auto mb-2'><a href='https://scholar.google.com/citations?&hl=en&user=hsNmAWYAAAAJ&hl=en' target='_blank'><i class='fa-solid fa-book'></i> Scholar</a></div>
             <div class='col-auto mb-2'><a href='https://github.com/{github}' target='_blank'><i class='fab fa-github fa-lg'></i> Github</a></div>
             <div class='col-auto mb-2'><a href='https://www.linkedin.com/in/{linkedin}' target='_blank'><i class='fab fa-linkedin fa-lg'></i> LinkedIn</a></div>
         </div>
@@ -181,7 +181,7 @@ def get_index_html():
                     {bio_text}
                 </div>
                 <div class="col-md-4 text-center" style="">
-                    <img src="assets/img/profile.jpg" style="width: 100%; max-width: 280px; height: auto; border-radius: 50%;" alt="Profile picture">
+                    <img src="assets/img/profile.png" style="width: 100%; max-width: 280px; height: auto; border-radius: 50%;" alt="Profile picture">
                 </div>
             </div>
             <div class="row" style="margin-top: 1em;">
