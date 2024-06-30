@@ -11,15 +11,18 @@ def get_personal_data():
                 <p>I am a Machine Learning MSc student at the <a href="https://uni-tuebingen.de/" target="_blank">University of Tübingen</a>, working in the <a href="https://health-nlp.com/" target="_blank">Health-NLP</a> group Tübingen.</p>
                 <p>
                     <span style="font-weight: bold;">Interests:</span> 
-                    I am interested in using Deep Learnin in NLP, to create AI systems that are effective, explainable, and socially beneficial.
-                    As AI capabilities are steadily increasing, I am interested in how to address and mitigate the societal risks associated with AI technologies both with technical and governance approaches.
+                    I am interested in the intersection of Deep Learning and Natural Language Processing to develop AI systems that are capable, trustworthy, and socially beneficial.
+                    As AI technologies advance, I want to contribute to addressing the societal risks and ensure equitable benefits by improving scientific understanding and effective governance approaches.                   
                     </p>
 
                 <p>
-                    <span style="font-weight: bold;">Bio:</span> 
-                    I received my BSc degree in Computer Science from the Unviersity of Tübingen in 2021 and graduated with distinction, ranking in the top 5% of my class.
-                    As a student, I worked part-time as a machine learning engineer at <a href="https://rawlab.de/" target="_blank">RAWLAB</a> a , where engineering data processing start up, where I applied ML methods to time-series analysis problems.
-                    I am currently writing my Master's thesis about representation engineering in LLMs under the supervision of Seyed Ali Bahrainian and Carsten Eickhoff from the Health-NLP group at the University Tübingen and Dmitrii Krasheninnikov and David Krueger from the KASL group at the University of Cambridge.
+                    <span style="font-weight: bold;">Bio:</span>
+                    I graduated with distinction in Computer Science from the <a href="https://uni-tuebingen.de/" target="_blank">University of Tübingen</a> in 2022, ranking in the top 5% of my class.
+                    During my studies, I worked as a machine learning engineer at <a href="https://rawlab.de/" target="_blank">RAWLAB</a>, a startup specializing in engineering data processing, where I applied machine learning models to time-series analysis.
+                    I am currently writing my Master's thesis on representation engineering in Large Language Models, supervised by <a href="https://scholar.google.ch/citations?user=UkzwC_EAAAAJ&hl=en" target="_blank">Seyed Ali Bahrainian</a> and 
+                    <a href="https://scholar.google.com/citations?user=QQi1_rAAAAAJ&hl=en" target="_blank">Carsten Eickhoff</a> from the <a href="https://health-nlp.com/" target="_blank">Health-NLP</a> group at the University of Tübingen, and 
+                    <a href="https://krasheninnikov.github.io/about/" target="_blank">Dmitrii Krasheninnikov</a> and 
+                    <a href="https://scholar.google.ca/citations?user=5Uz70IoAAAAJ&hl=en" target="_blank">David Krueger</a> from the <a href="https://www.kasl.ai/" target="_blank">Krueger AI Safety Lab</a> at the University of Cambridge.
                 </p>
                 <p>Feel free to reach out to me via mail!</p>
     """
@@ -52,7 +55,9 @@ def get_author_dict():
         "David Krueger": "https://scholar.google.ca/citations?user=5Uz70IoAAAAJ&hl=en",
         "Dmitrii Krasheninnikov": "https://krasheninnikov.github.io/about/",
         "Seyed Ali Bahrainian": "https://scholar.google.ch/citations?user=UkzwC_EAAAAJ&hl=en",
-        "Carsten Eickhoff": "https://scholar.google.com/citations?user=QQi1_rAAAAAJ&hl=ja",
+        "Carsten Eickhoff": "https://scholar.google.com/citations?user=QQi1_rAAAAAJ&hl=en",
+        "NLP-health": "https://health-nlp.com/",
+        "KASL": "https://www.kasl.ai/"
     }
 
 
@@ -134,6 +139,25 @@ def get_paper_entry(entry_key, entry):
     s += """ </div> </div> </div>"""
     return s
 
+def get_talk_entry(entry_key, entry):
+    s = """<div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3">"""
+    s += f"""<img src="{entry.fields['img']}" class="img-fluid img-thumbnail" alt="Project image">"""
+    s += """</div><div class="col-sm-9">"""
+    s += f"""{entry.fields['title']}<br>"""
+    s += f"""<span style="font-style: italic;">{entry.fields['booktitle']}</span>, {entry.fields['year']} <br>"""
+
+    artefacts = {'slides': 'Slides', 'video': 'Recording'}
+    i = 0
+    for (k, v) in artefacts.items():
+        if k in entry.fields.keys():
+            if i > 0:
+                s += ' / '
+            s += f"""<a href="{entry.fields[k]}" target="_blank">{v}</a>"""
+            i += 1
+        else:
+            print(f'[{entry_key}] Warning: Field {k} missing!')
+    s += """ </div> </div> </div>"""
+    return s
 
 def get_publications_html():
     parser = bibtex.Parser()
@@ -142,6 +166,15 @@ def get_publications_html():
     s = ""
     for k in keys:
         s += get_paper_entry(k, bib_data.entries[k])
+    return s
+
+def get_talks_html():
+    parser = bibtex.Parser()
+    bib_data = parser.parse_file('talk_list.bib')
+    keys = bib_data.entries.keys()
+    s = ""
+    for k in keys:
+        s+= get_talk_entry(k, bib_data.entries[k])
     return s
 
 
@@ -157,6 +190,7 @@ def get_misc_html():
 
 def get_index_html():
     pub = get_publications_html()
+    talks = get_talks_html()
     misc = get_misc_html()
     name, bio_text, footer, links_html = get_personal_data()
     s = f"""
@@ -189,6 +223,12 @@ def get_index_html():
                 <div class="col-sm-12" style="">
                     <h4>Publications</h4>
                     {pub}
+                </div>
+            </div>
+            <div class="row" style="margin-top: 3em;">
+                <div class="col-sm-12" style="">
+                    <h4>Talks</h4>
+                    {talks}
                 </div>
             </div>
             <div class="row" style="margin-top: 3em;">
