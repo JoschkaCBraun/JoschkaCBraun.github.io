@@ -57,7 +57,8 @@ def get_author_dict():
         "Seyed Ali Bahrainian": "https://scholar.google.ch/citations?user=UkzwC_EAAAAJ&hl=en",
         "Carsten Eickhoff": "https://scholar.google.com/citations?user=QQi1_rAAAAAJ&hl=en",
         "NLP-health": "https://health-nlp.com/",
-        "KASL": "https://www.kasl.ai/"
+        "KASL": "https://www.kasl.ai/",
+        "Bálint Mucsányi": "https://scholar.google.com/citations?user=NexA8EEAAAAJ&hl=en"
     }
 
 
