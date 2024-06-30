@@ -36,7 +36,7 @@ def get_personal_data():
         <div class='row justify-content-center'>
             <div class='col-auto mb-2'><a href='https://joschkacbraun.github.io/assets/pdf/CV_Joschka_Braun.pdf' target='_blank'><i class='fa fa-address-card fa-lg'></i> CV</a></div>
             <div class='col-auto mb-2'><a href='mailto:{email}'><i class='far fa-envelope-open fa-lg'></i> Mail</a></div>
-            <div class='col-auto mb-2'><a href='https://twitter.com/{twitter}' target='_blank'><i class='fab fa-x-twitter fa-lg'></i> Twitter</a></div>
+            <div class='col-auto mb-2'><a href='https://x.com/{twitter}' target='_blank'><i class='fab fa-x-twitter fa-lg'></i> Twitter</a></div>
             <div class='col-auto mb-2'><a href='https://scholar.google.com/citations?&hl=en&user=hsNmAWYAAAAJ&hl=en' target='_blank'><i class='fa-solid fa-book'></i> Scholar</a></div>
             <div class='col-auto mb-2'><a href='https://github.com/{github}' target='_blank'><i class='fab fa-github fa-lg'></i> Github</a></div>
             <div class='col-auto mb-2'><a href='https://www.linkedin.com/in/{linkedin}' target='_blank'><i class='fab fa-linkedin fa-lg'></i> LinkedIn</a></div>
@@ -168,6 +168,7 @@ def get_index_html():
         <link rel="stylesheet" <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         </style>
         <title>{name[0] + ' ' + name[1]}</title>
+        <link rel="icon" type="image/x-icon" href="assets/icon.ico">
     </head>
 
     <body>
