@@ -1,12 +1,15 @@
+from typing import List, Dict, Tuple
 from pybtex.database.input import bibtex
 
 
-def get_personal_data():
+def get_personal_data() -> Tuple[List[str], str, str, str]:
+    """Get personal data for the homepage."""
     name = ["Joschka", "Braun"]
     email = "joschkacbraun@gmail.com"
     twitter = "BraunJoschka"
     github = "JoschkaCBraun"
     linkedin = "joschka-braun"
+    bluesky = "joschkabraun.bsky.social"
     bio_text = f"""
                 <p>I am a Machine Learning MSc student at the <a href="https://uni-tuebingen.de/" target="_blank">University of Tübingen</a>, working in the <a href="https://health-nlp.com/" target="_blank">Health-NLP</a> group Tübingen.</p>
                 <p>
@@ -43,6 +46,7 @@ def get_personal_data():
             <div class='col-auto mb-2'><a href='https://scholar.google.com/citations?&hl=en&user=hsNmAWYAAAAJ&hl=en' target='_blank'><i class='fa-solid fa-book'></i> Scholar</a></div>
             <div class='col-auto mb-2'><a href='https://github.com/{github}' target='_blank'><i class='fab fa-github fa-lg'></i> Github</a></div>
             <div class='col-auto mb-2'><a href='https://www.linkedin.com/in/{linkedin}' target='_blank'><i class='fab fa-linkedin fa-lg'></i> LinkedIn</a></div>
+            <div class='col-auto mb-2'><a href='https://bsky.app/profile/{bluesky}' target='_blank'><i class='fa-brands fa-b'></i> Bluesky</a></div>
         </div>
     </div>
     """
@@ -50,7 +54,8 @@ def get_personal_data():
     return name, bio_text, footer, links_html
 
 
-def get_author_dict():
+def get_author_dict() -> Dict[str, str]:
+    """Get a dictionary of authors and their links."""
     return {
         "David Krueger": "https://scholar.google.ca/citations?user=5Uz70IoAAAAJ&hl=en",
         "Dmitrii Krasheninnikov": "https://krasheninnikov.github.io/about/",
@@ -70,7 +75,8 @@ def generate_person_html(
     make_bold=True,
     make_bold_name="Joschka Braun",
     add_links=True,
-):
+) -> str:
+    """Generate HTML for a list of persons."""
     links = get_author_dict() if add_links else {}
     s = ""
     for p in persons:
@@ -93,7 +99,8 @@ def generate_person_html(
     return s
 
 
-def get_paper_entry(entry_key, entry):
+def get_paper_entry(entry_key, entry) -> str:
+    """Generate HTML for a paper entry."""
     s = """<div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3">"""
     s += f"""<img src="{entry.fields['img']}" class="img-fluid img-thumbnail" alt="Project image">"""
     s += """</div><div class="col-sm-9">"""
@@ -142,7 +149,8 @@ def get_paper_entry(entry_key, entry):
     s += """ </div> </div> </div>"""
     return s
 
-def get_talk_entry(entry_key, entry):
+def get_talk_entry(entry_key, entry) -> str:
+    """Generate HTML for a talk entry."""
     s = """<div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3">"""
     s += f"""<img src="{entry.fields['img']}" class="img-fluid img-thumbnail" alt="Project image">"""
     s += """</div><div class="col-sm-9">"""
@@ -162,7 +170,8 @@ def get_talk_entry(entry_key, entry):
     s += """ </div> </div> </div>"""
     return s
 
-def get_publications_html():
+def get_publications_html() -> str:
+    """Generate HTML for the publications."""
     parser = bibtex.Parser()
     bib_data = parser.parse_file("publication_list.bib")
     keys = bib_data.entries.keys()
@@ -171,7 +180,8 @@ def get_publications_html():
         s += get_paper_entry(k, bib_data.entries[k])
     return s
 
-def get_talks_html():
+def get_talks_html() -> str:
+    """Generate HTML for the talks."""
     parser = bibtex.Parser()
     bib_data = parser.parse_file('talk_list.bib')
     keys = bib_data.entries.keys()
@@ -180,8 +190,18 @@ def get_talks_html():
         s+= get_talk_entry(k, bib_data.entries[k])
     return s
 
+def get_projects_html() -> str:
+    """Generate HTML for the projects."""
+    parser = bibtex.Parser()
+    bib_data = parser.parse_file("projects_list.bib")
+    keys = bib_data.entries.keys()
+    s = ""
+    for k in keys:
+        s += get_paper_entry(k, bib_data.entries[k])
+    return s
 
-def get_misc_html():
+def get_misc_html() -> str:
+    """Generate HTML for the miscellaneous."""
     parser = bibtex.Parser()
     bib_data = parser.parse_file("miscellaneous_list.bib")
     keys = bib_data.entries.keys()
@@ -190,10 +210,11 @@ def get_misc_html():
         s += get_paper_entry(k, bib_data.entries[k])
     return s
 
-
-def get_index_html():
+def get_index_html() -> str:
+    """Generate the HTML for the index page."""
     pub = get_publications_html()
     talks = get_talks_html()
+    projects = get_projects_html()
     misc = get_misc_html()
     name, bio_text, footer, links_html = get_personal_data()
     s = f"""
@@ -236,6 +257,12 @@ def get_index_html():
             </div>
             <div class="row" style="margin-top: 3em;">
                 <div class="col-sm-12" style="">
+                    <h4>Projects</h4>
+                    {projects}
+                </div>
+            </div>
+            <div class="row" style="margin-top: 3em;">
+                <div class="col-sm-12" style="">
                     <h4>Miscellaneous</h4>
                     {misc}
                 </div>
@@ -263,7 +290,7 @@ def get_index_html():
     return s
 
 
-def write_index_html(filename="index.html"):
+def write_index_html(filename="index.html") -> None:
     s = get_index_html()
     with open(filename, "w") as f:
         f.write(s)
