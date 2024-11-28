@@ -42,11 +42,11 @@ def get_personal_data() -> Tuple[List[str], str, str, str]:
         <div class='row justify-content-center'>
             <div class='col-auto mb-2'><a href='https://joschkacbraun.github.io/assets/pdf/CV_Joschka_Braun.pdf' target='_blank'><i class='fa fa-address-card fa-lg'></i> CV</a></div>
             <div class='col-auto mb-2'><a href='mailto:{email}'><i class='far fa-envelope-open fa-lg'></i> Mail</a></div>
-            <div class='col-auto mb-2'><a href='https://x.com/{twitter}' target='_blank'><i class='fab fa-x-twitter fa-lg'></i> Twitter</a></div>
-            <div class='col-auto mb-2'><a href='https://scholar.google.com/citations?&hl=en&user=hsNmAWYAAAAJ&hl=en' target='_blank'><i class='fa-solid fa-book'></i> Scholar</a></div>
             <div class='col-auto mb-2'><a href='https://github.com/{github}' target='_blank'><i class='fab fa-github fa-lg'></i> Github</a></div>
+            <div class='col-auto mb-2'><a href='https://scholar.google.com/citations?&hl=en&user=hsNmAWYAAAAJ&hl=en' target='_blank'><i class='fa-solid fa-book'></i> Scholar</a></div>
+            <div class='col-auto mb-2'><a href='https://x.com/{twitter}' target='_blank'><i class='fab fa-x-twitter fa-lg'></i> X</a></div>
+            <div class='col-auto mb-2'><a href='https://bsky.app/profile/{bluesky}' target='_blank'><i class='fa-brands fa-bluesky'></i> Bluesky</a></div>
             <div class='col-auto mb-2'><a href='https://www.linkedin.com/in/{linkedin}' target='_blank'><i class='fab fa-linkedin fa-lg'></i> LinkedIn</a></div>
-            <div class='col-auto mb-2'><a href='https://bsky.app/profile/{bluesky}' target='_blank'><i class='fa-brands fa-b'></i> Bluesky</a></div>
         </div>
     </div>
     """
