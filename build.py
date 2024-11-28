@@ -61,7 +61,6 @@ def get_author_dict():
         # "Bálint Mucsányi": "https://scholar.google.com/citations?user=NexA8EEAAAAJ&hl=en"
     }
 
-
 def generate_person_html(
     persons,
     connection=", ",
