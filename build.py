@@ -58,7 +58,10 @@ def get_author_dict():
         "Carsten Eickhoff": "https://scholar.google.com/citations?user=QQi1_rAAAAAJ&hl=en",
         "NLP-health": "https://health-nlp.com/",
         "KASL": "https://www.kasl.ai/",
-        # "Bálint Mucsányi": "https://scholar.google.com/citations?user=NexA8EEAAAAJ&hl=en"
+        "Usman Anwar" : "https://uzman-anwar.github.io/",
+        "Robert Kirk" : "https://robertkirk.github.io/",
+        "Daniel Tan" : "https://dtch1997.github.io/",
+        "Bálint Mucsányi": "https://scholar.google.com/citations?user=NexA8EEAAAAJ&hl=en",
     }
 
 def generate_person_html(
