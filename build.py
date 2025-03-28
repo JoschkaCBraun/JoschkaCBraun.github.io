@@ -28,7 +28,7 @@ def get_personal_data() -> Tuple[List[str], str, str, str]:
                     <a href="https://scholar.google.ca/citations?user=5Uz70IoAAAAJ&hl=en" target="_blank">David Krueger</a> from the <a href="https://www.kasl.ai/" target="_blank">Krueger AI Safety Lab</a> at the University of Cambridge.
                 </p>
                 <p>Feel free to reach out to me via mail!</p>
-    """
+                """
     footer = """
             <div class="col-sm-12" style="">
                 <h4>Homepage Template</h4>

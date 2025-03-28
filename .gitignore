@@ -56,3 +56,4 @@ assets/pdf/generated/
 *.bbl
 *.blg
 *.aux
+logs/
