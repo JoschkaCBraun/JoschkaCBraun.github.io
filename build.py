@@ -122,6 +122,7 @@ def get_paper_entry(entry_key, entry) -> str:
         "video": "Video",
         "poster": "Poster",
         "code": "Code",
+        "slides": "Slides",
     }
     i = 0
     for k, v in artefacts.items():
