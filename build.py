@@ -69,8 +69,8 @@ def get_author_dict() -> Dict[str, str]:
         "Robert Kirk" : "https://robertkirk.github.io/",
         "Daniel Tan" : "https://dtch1997.github.io/",
         "Bálint Mucsányi": "https://scholar.google.com/citations?user=NexA8EEAAAAJ&hl=en",
-        "Damon Falck": "https://www.linkedin.com/in/damon-falck/",
-        "Yeonwoo Jang": "https://www.linkedin.com/in/yeonwoo-jang/",
+        "Damon Falck": "https://scholar.google.com/citations?user=hsNmAWYAAAAJ&hl=en",
+        "Yeonwoo Jang": "https://scholar.google.com/citations?user=hsNmAWYAAAAJ&hl=en",
     }
 
 def generate_person_html(
@@ -109,7 +109,13 @@ def get_paper_entry(entry_key, entry) -> str:
     s += f"""<img src="{entry.fields['img']}" class="img-fluid img-thumbnail" alt="Project image">"""
     s += """</div><div class="col-sm-9">"""
 
-    fields_key = "pdf" if "html" not in entry.fields.keys() else "html"
+    # Prioritize slides over html for title link
+    if "pdf" in entry.fields.keys():
+        fields_key = "pdf"
+    elif "slides" in entry.fields.keys():
+        fields_key = "slides"
+    else:
+        fields_key = "html"
 
     if "award" in entry.fields.keys():
         s += f"""<a href="{entry.fields[fields_key]}" target="_blank">{entry.fields['title']}</a> <span style="color: red;">({entry.fields['award']})</span><br>"""
