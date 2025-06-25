@@ -69,8 +69,8 @@ def get_author_dict() -> Dict[str, str]:
         "Robert Kirk" : "https://robertkirk.github.io/",
         "Daniel Tan" : "https://dtch1997.github.io/",
         "Bálint Mucsányi": "https://scholar.google.com/citations?user=NexA8EEAAAAJ&hl=en",
-        "Damon Falck": "https://scholar.google.com/citations?user=hsNmAWYAAAAJ&hl=en",
-        "Yeonwoo Jang": "https://scholar.google.com/citations?user=hsNmAWYAAAAJ&hl=en",
+        "Damon Falck": "https://scholar.google.com/citations?hl=en&user=_TQEoLgAAAAJ",
+        "Yeonwoo Jang": "https://scholar.google.com/citations?user=jXfklAEAAAAJ",
     }
 
 def generate_person_html(
