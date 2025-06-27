@@ -48,7 +48,7 @@ def get_personal_data() -> Tuple[List[str], str, str, str]:
             <div class='col-auto mb-2'><a href='https://scholar.google.com/citations?&hl=en&user=hsNmAWYAAAAJ&hl=en' target='_blank'><i class='fa-solid fa-book'></i> Scholar</a></div>
             <div class='col-auto mb-2'><a href='https://orcid.org/{orcid}' target='_blank'><i class='fa-brands fa-orcid'></i> ORCID</a></div>
             <div class='col-auto mb-2'><a href='https://x.com/{twitter}' target='_blank'><i class='fab fa-x-twitter fa-lg'></i> X</a></div>
-            <div class='col-auto mb-2'><a href='https://bsky.app/profile/{bluesky}' target='_blank'><img src='assets/bluesky-logo.svg' alt='Bluesky' style='width: 16px; height: 16px; vertical-align: middle; margin-right: 4px;'> Bluesky</a></div>
+            <div class='col-auto mb-2'><a href='https://bsky.app/profile/{bluesky}' target='_blank'><img src='assets/bluesky-logo.svg' alt='Bluesky' style='width: 16px; height: 16px; vertical-align: middle; margin-right: 4px; display: inline-block;' onerror="this.style.display='none'; this.nextSibling.style.display='inline';"><i class='fas fa-cloud' style='display: none; color: #0085FF;'></i> Bluesky</a></div>
             <div class='col-auto mb-2'><a href='https://www.linkedin.com/in/{linkedin}' target='_blank'><i class='fab fa-linkedin fa-lg'></i> LinkedIn</a></div>
         </div>
     </div>
