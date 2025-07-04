@@ -189,7 +189,6 @@ def get_public_debate_entry(entry_key, entry) -> str:
     s += """</div><div class="col-sm-9">"""
     s += f"""{entry.fields['title']}<br>"""
     s += f"""<span style="font-style: italic;">{entry.fields['description']}</span><br>"""
-    s += f"""{entry.fields['year']} <br>"""
 
     artefacts = {'video': 'Video', 'link': 'Link'}
     i = 0
