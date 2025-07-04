@@ -182,6 +182,28 @@ def get_talk_entry(entry_key, entry) -> str:
     s += """ </div> </div> </div>"""
     return s
 
+def get_public_debate_entry(entry_key, entry) -> str:
+    """Generate HTML for a public debate entry."""
+    s = """<div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3">"""
+    s += f"""<img src="{entry.fields['img']}" class="img-fluid img-thumbnail" alt="Debate image">"""
+    s += """</div><div class="col-sm-9">"""
+    s += f"""{entry.fields['title']}<br>"""
+    s += f"""<span style="font-style: italic;">{entry.fields['description']}</span><br>"""
+    s += f"""{entry.fields['year']} <br>"""
+
+    artefacts = {'video': 'Video', 'link': 'Link'}
+    i = 0
+    for (k, v) in artefacts.items():
+        if k in entry.fields.keys():
+            if i > 0:
+                s += ' / '
+            s += f"""<a href="{entry.fields[k]}" target="_blank">{v}</a>"""
+            i += 1
+        else:
+            print(f'[{entry_key}] Warning: Field {k} missing!')
+    s += """ </div> </div> </div>"""
+    return s
+
 def get_publications_html() -> str:
     """Generate HTML for the publications."""
     parser = bibtex.Parser()
@@ -200,6 +222,16 @@ def get_talks_html() -> str:
     s = ""
     for k in keys:
         s+= get_talk_entry(k, bib_data.entries[k])
+    return s
+
+def get_public_debates_html() -> str:
+    """Generate HTML for the public debates."""
+    parser = bibtex.Parser()
+    bib_data = parser.parse_file('public_debates_list.bib')
+    keys = bib_data.entries.keys()
+    s = ""
+    for k in keys:
+        s += get_public_debate_entry(k, bib_data.entries[k])
     return s
 
 def get_projects_html() -> str:
@@ -228,6 +260,7 @@ def get_index_html() -> str:
     talks = get_talks_html()
     projects = get_projects_html()
     misc = get_misc_html()
+    public_debates = get_public_debates_html()
     name, bio_text, footer, links_html = get_personal_data()
     s = f"""
     <!doctype html>
@@ -271,6 +304,12 @@ def get_index_html() -> str:
                 <div class="col-sm-12" style="">
                     <h4>Projects</h4>
                     {projects}
+                </div>
+            </div>
+            <div class="row" style="margin-top: 3em;">
+                <div class="col-sm-12" style="">
+                    <h4>Public Debates</h4>
+                    {public_debates}
                 </div>
             </div>
             <div class="row" style="margin-top: 3em;">
