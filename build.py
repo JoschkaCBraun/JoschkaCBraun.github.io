@@ -16,7 +16,6 @@ def get_personal_data() -> Tuple[List[str], str, str, str]:
                 <p>
                     I am a machine learning researcher focused on developing trustworthy, interpretable, and socially beneficial AI systems.
                 <p>
-                    <span style="font-weight: bold;">Bio:</span>
                     I am currently a scholar in the <a href="https://www.matsprogram.org/" target="_blank">ML Alignment & Theory Scholars (MATS) Program</a>, working on Scalable Oversight and AI Control with 
                     <a href="https://scholar.google.com/citations?user=p_aH5fgAAAAJ&hl=en" target="_blank">David Lindner</a>, 
                     <a href="https://scholar.google.com/citations?user=8DgF8HcAAAAJ&hl=de" target="_blank">Erik Jenner</a>, and 
