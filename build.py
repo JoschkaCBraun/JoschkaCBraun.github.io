@@ -1,6 +1,7 @@
 from typing import List, Dict, Tuple
 from pybtex.database.input import bibtex
-
+# ignore f strings linter error (f string without interpolation W1309)
+# pylint: disable=W1309
 
 def get_personal_data() -> Tuple[List[str], str, str, str]:
     """Get personal data for the homepage."""
@@ -12,21 +13,22 @@ def get_personal_data() -> Tuple[List[str], str, str, str]:
     bluesky = "joschkabraun.bsky.social"
     orcid = "0009-0001-0281-2091"
     bio_text = f"""
-                <p>I am a Machine Learning MSc student at the <a href="https://uni-tuebingen.de/" target="_blank">University of Tübingen</a>, working in the <a href="https://health-nlp.com/" target="_blank">Health-NLP</a> group Tübingen.</p>
                 <p>
-                    <span style="font-weight: bold;">Interests:</span> 
-                    I am interested in the intersection of Deep Learning and Natural Language Processing to develop AI systems that are capable, trustworthy, and socially beneficial.
-                    As AI technologies advance, I want to contribute to addressing the societal risks and ensure equitable benefits by improving scientific understanding and effective governance approaches.                   
-                    </p>
-
+                    I am a machine learning researcher focused on developing trustworthy, interpretable, and socially beneficial AI systems.
                 <p>
                     <span style="font-weight: bold;">Bio:</span>
-                    I graduated with distinction in Computer Science from the <a href="https://uni-tuebingen.de/" target="_blank">University of Tübingen</a> in 2022, ranking in the top 5% of my class.
-                    During my studies, I worked as a machine learning engineer at <a href="https://rawlab.de/" target="_blank">RAWLAB</a>, a startup specializing in engineering data processing, where I applied machine learning models to time-series analysis.
-                    I am currently writing my Master's thesis on representation engineering in Large Language Models, supervised by <a href="https://scholar.google.ch/citations?user=UkzwC_EAAAAJ&hl=en" target="_blank">Seyed Ali Bahrainian</a> and 
-                    <a href="https://scholar.google.com/citations?user=QQi1_rAAAAAJ&hl=en" target="_blank">Carsten Eickhoff</a> from the <a href="https://health-nlp.com/" target="_blank">Health-NLP</a> group at the University of Tübingen, and 
-                    <a href="https://krasheninnikov.github.io/about/" target="_blank">Dmitrii Krasheninnikov</a> and 
-                    <a href="https://scholar.google.ca/citations?user=5Uz70IoAAAAJ&hl=en" target="_blank">David Krueger</a> from the <a href="https://www.kasl.ai/" target="_blank">Krueger AI Safety Lab</a> at the University of Cambridge.
+                    I am currently a scholar in the <a href="https://www.matsprogram.org/" target="_blank">ML Alignment & Theory Scholars (MATS) Program</a>, working on Scalable Oversight and AI Control with 
+                    <a href="https://scholar.google.com/citations?user=p_aH5fgAAAAJ&hl=en" target="_blank">David Lindner</a>, 
+                    <a href="https://scholar.google.com/citations?user=8DgF8HcAAAAJ&hl=de" target="_blank">Erik Jenner</a>, and 
+                    <a href="https://scholar.google.com/citations?user=LoT0z6oAAAAJ&hl=en" target="_blank">Scott Emmons</a>.
+                </p>
+                <p>
+                    Previously, I did research on the reliability of steering vectors in Large Language Models with <a href="https://krasheninnikov.github.io/about/" target="_blank">Dmitrii Krasheninnikov</a> and <a href="https://scholar.google.ca/citations?user=5Uz70IoAAAAJ&hl=en" target="_blank">David Krueger</a> at the <a href="https://www.kasl.ai/" target="_blank">Krueger AI Safety Lab</a> at the University of Cambridge. I have also worked on applications of representation engineering at the <a href="https://health-nlp.com/" target="_blank">Health-NLP</a> group, supervised by 
+                    <a href="https://scholar.google.ch/citations?user=UkzwC_EAAAAJ&hl=en" target="_blank">Seyed Ali Bahrainian</a> and 
+                    <a href="https://scholar.google.com/citations?user=QQi1_rAAAAAJ&hl=en" target="_blank">Carsten Eickhoff</a>.
+                </p>
+                <p>
+                    I hold a Master of Science in Machine Learning and a Bachelor of Science in Computer Science from the <a href="https://uni-tuebingen.de/" target="_blank">University of Tübingen</a>. My research is in the intersection of Deep Learning and Natural Language Processing, driven by the challenge of building safe and equitable AI systems. As AI technologies advance, I want to contribute to addressing the societal risks and ensure equitable benefits by improving scientific understanding and effective governance approaches.  
                 </p>
                 <p>Feel free to reach out to me via mail!</p>
                 """
