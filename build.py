@@ -135,6 +135,7 @@ def get_paper_entry(entry_key, entry) -> str:
         "poster": "Poster",
         "code": "Code",
         "slides": "Slides",
+        "arxiv": "arXiv",
     }
     i = 0
     for k, v in artefacts.items():
@@ -154,6 +155,11 @@ def get_paper_entry(entry_key, entry) -> str:
     )
     for entr in ["title", "booktitle", "year"]:
         cite += f"\t{entr} = " + "{" + f"{entry.fields[entr]}" + "}, \n"
+    
+    # Add eprint field if it exists
+    if "eprint" in entry.fields.keys():
+        cite += f"\teprint = " + "{" + f"{entry.fields['eprint']}" + "}, \n"
+    
     cite += """}</pre></code>"""
     s += (
         " /"
