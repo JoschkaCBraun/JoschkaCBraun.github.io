@@ -79,7 +79,11 @@ def get_author_dict() -> Dict[str, str]:
         "Bálint Mucsányi": "https://scholar.google.com/citations?user=NexA8EEAAAAJ&hl=en",
         "Damon Falck": "https://scholar.google.com/citations?hl=en&user=_TQEoLgAAAAJ",
         "Yeonwoo Jang": "https://scholar.google.com/citations?user=jXfklAEAAAAJ",
+        "Roland S. Zimmermann": "https://rzimmermann.com/",
+        "Scott Emmons": "https://scholar.google.com/citations?user=LoT0z6oAAAAJ&hl=en",
+        "David Lindner": "https://scholar.google.com/citations?user=p_aH5fgAAAAJ&hl=en",
     }
+
 
 def generate_person_html(
     persons,
@@ -88,7 +92,7 @@ def generate_person_html(
     make_bold_name="Joschka Braun",
     add_links=True,
 ) -> str:
-    """Generate HTML for a list of persons."""
+    """Generate HTML for a list of persons. Preserves literal asterisks in names but matches links/bold against a canonical name without asterisks."""
     links = get_author_dict() if add_links else {}
     s = ""
     for p in persons:
@@ -99,15 +103,27 @@ def generate_person_html(
             if string_part_i != "":
                 string_part_i += " "
             string_part_i += name_part_i
-        if string_part_i in links.keys():
-            string_part_i = (
-                f'<a href="{links[string_part_i]}" target="_blank">{string_part_i}</a>'
-            )
-        if make_bold and string_part_i == make_bold_name:
-            string_part_i = f'<span style="font-weight: bold";>{make_bold_name}</span>'
+
+        # Keep the original display (which may include trailing asterisks)
+        display_name = string_part_i
+        # Canonical name for matching (strip any asterisks and surrounding whitespace)
+        canonical_name = display_name.replace("*", "").strip()
+
+        # Determine formatting
+        is_bold = make_bold and canonical_name == make_bold_name
+        is_link = add_links and (canonical_name in links.keys())
+
+        rendered = display_name
+        if is_bold:
+            rendered = f'<span style="font-weight: bold">{rendered}</span>'
+        if is_link:
+            href = links[canonical_name]
+            # Make the whole rendered text clickable
+            rendered = f'<a href="{href}" target="_blank">{rendered}</a>'
+
         if p != persons[-1]:
-            string_part_i += connection
-        s += string_part_i
+            rendered += connection
+        s += rendered
     return s
 
 
