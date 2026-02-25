@@ -48,7 +48,7 @@ def get_personal_data() -> Tuple[List[str], str, str, str]:
     links_html = f"""
     <div class='container'>
         <div class='row justify-content-center'>
-            <div class='col-auto mb-2'><a href='https://joschkacbraun.github.io/assets/pdf/CV_Joschka_Braun.pdf' target='_blank'><i class='fa fa-address-card fa-lg'></i> CV</a></div>
+            <div class='col-auto mb-2'><a href='https://joschkacbraun.github.io/assets/pdf/cv_joschka.pdf' target='_blank'><i class='fa fa-address-card fa-lg'></i> CV</a></div>
             <div class='col-auto mb-2'><a href='mailto:{email}'><i class='far fa-envelope-open fa-lg'></i> Mail</a></div>
             <div class='col-auto mb-2'><a href='https://github.com/{github}' target='_blank'><i class='fab fa-github fa-lg'></i> Github</a></div>
             <div class='col-auto mb-2'><a href='https://huggingface.co/Joschka' target='_blank'><img src='assets/huggingface-logo.svg' alt='Hugging Face' style='width: 27px; height: 27px; vertical-align: middle; margin-right: 4px;'> Hugging Face</a></div>
@@ -262,16 +262,6 @@ def get_public_debates_html() -> str:
         s += get_public_debate_entry(k, bib_data.entries[k])
     return s
 
-def get_projects_html() -> str:
-    """Generate HTML for the projects."""
-    parser = bibtex.Parser()
-    bib_data = parser.parse_file("projects_list.bib")
-    keys = bib_data.entries.keys()
-    s = ""
-    for k in keys:
-        s += get_paper_entry(k, bib_data.entries[k])
-    return s
-
 def get_misc_html() -> str:
     """Generate HTML for the miscellaneous."""
     parser = bibtex.Parser()
@@ -286,7 +276,6 @@ def get_index_html() -> str:
     """Generate the HTML for the index page."""
     pub = get_publications_html()
     talks = get_talks_html()
-    projects = get_projects_html()
     misc = get_misc_html()
     public_debates = get_public_debates_html()
     name, bio_text, footer, links_html = get_personal_data()
@@ -326,12 +315,6 @@ def get_index_html() -> str:
                 <div class="col-sm-12" style="">
                     <h4>Talks</h4>
                     {talks}
-                </div>
-            </div>
-            <div class="row" style="margin-top: 3em;">
-                <div class="col-sm-12" style="">
-                    <h4>Projects</h4>
-                    {projects}
                 </div>
             </div>
             <div class="row" style="margin-top: 3em;">
