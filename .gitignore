@@ -1,0 +1,59 @@
+# macOS specific files
+.DS_Store
+
+# Python cache and temporary files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.mypy_cache/
+*.mypy_cache/
+
+# Jekyll specific files
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Bundler specific files
+.bundle/
+vendor/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# IDE/Editor specific files
+*.swp
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Node and npm related files
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Build artifacts
+*.egg-info/
+dist/
+build/
+*.out
+
+# Assets generated for the website
+assets/img/generated/
+assets/pdf/generated/
+
+# Ignore personal settings and private files
+.env
+*.key
+*.pem
+
+# Exclude BibTeX backup files
+*.bbl
+*.blg
+*.aux
+logs/
